@@ -1,18 +1,33 @@
-import { motion } from 'framer-motion';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import WorkList from '@/components/WorkList';
+import About from '@/components/About';
+import WhatIDo from '@/components/WhatIDo';
+import Services from '@/components/Services';
+import Footer from '@/components/Footer';
+
+const Separator = () => (
+  <div className="w-full pl-12">
+    <div className="h-0.5 bg-[#1a1a1a] w-full" />
+  </div>
+);
 
 const Home = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen text-center">
-      <motion.h1
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-4xl font-bold mb-4"
-      >
-        Welcome to My Portfolio
-      </motion.h1>
-      <p className="text-lg text-gray-400">
-        Built with React, Tailwind v4, and Framer Motion.
-      </p>
+    <div className="min-h-screen bg-white text-[#1a1a1a]">
+      <Navbar />
+      <main>
+        <Hero />
+        <Separator />
+        <WorkList />
+        <Separator />
+        <WhatIDo />
+        <Separator />
+        <Services />
+        <Separator />
+        <About />
+      </main>
+      <Footer />
     </div>
   );
 };
