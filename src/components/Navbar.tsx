@@ -33,7 +33,7 @@ const Navbar = () => {
       animate={{ y: isVisible ? 0 : -100 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
-      <div className="flex items-center justify-between px-6 py-6 w-full">
+      <div className="flex items-center justify-between px-6 py-4 w-full">
         <div className="text-xl font-semibold tracking-tight">
           <Link to="/">Vladimir</Link>
         </div>

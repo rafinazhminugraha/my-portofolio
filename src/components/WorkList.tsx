@@ -40,9 +40,11 @@ const projects = [
   },
 ];
 
-const ProjectSection = ({ project }: { project: typeof projects[0] }) => {
+const ProjectSection = ({ project, isLast }: { project: typeof projects[0], isLast: boolean }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [opacity, setOpacity] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+  const [isLocked, setIsLocked] = useState(false);
+  const lockScrollY = useRef<number>(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,18 +57,47 @@ const ProjectSection = ({ project }: { project: typeof projects[0] }) => {
 
       // Calculate distance from viewport center
       const distance = Math.abs(sectionCenter - viewportCenter);
-      const maxDistance = windowHeight / 2;
+      
+      // Activation threshold - when to first activate
+      const activationThreshold = windowHeight * 0.3;
+      
+      // Lock threshold - how much to scroll before unlocking (in pixels)
+      const lockScrollThreshold = windowHeight * 0.4;
+      
+      const shouldActivate = distance < activationThreshold;
+      
+      if (shouldActivate && !isLocked && !isActive) {
+        // First activation - lock it in place
+        setIsActive(true);
+        setIsLocked(true);
+        lockScrollY.current = window.scrollY;
+      } else if (isLocked) {
+        // Check if we've scrolled enough to unlock
+        const scrollDelta = Math.abs(window.scrollY - lockScrollY.current);
+        const isScrollingDown = window.scrollY > lockScrollY.current;
 
-      // Calculate opacity: 1 when centered, 0 when far away
-      const calculatedOpacity = Math.max(0, 1 - distance / maxDistance);
-      setOpacity(calculatedOpacity);
+        // If it's the last project and we're scrolling down, don't unlock/disappear
+        if (isLast && isScrollingDown) return;
+        
+        if (scrollDelta > lockScrollThreshold) {
+          // Unlock and check if we should deactivate
+          setIsLocked(false);
+          if (!shouldActivate) {
+            setIsActive(false);
+          }
+        }
+        // While locked, stay active regardless of position
+      } else if (!isLocked) {
+        // Not locked, follow normal activation logic
+        setIsActive(shouldActivate);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial calculation
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isActive, isLocked, isLast]);
 
   return (
     <div 
@@ -74,14 +105,80 @@ const ProjectSection = ({ project }: { project: typeof projects[0] }) => {
       className="project-section min-h-screen flex flex-col justify-center py-24"
     >
       <motion.div
-        style={{ opacity }}
-        transition={{ duration: 0.1 }}
+        initial={{ opacity: 0, scale: 0.8, y: 80 }}
+        animate={isActive ? {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+        } : {
+          opacity: 0,
+          scale: 0.85,
+          y: 60,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 500,
+          damping: 35,
+          mass: 0.5,
+        }}
       >
-        <h3 className="text-4xl font-medium mb-4">{project.name}</h3>
-        <p className="text-lg text-gray-500 mb-6 font-light">{project.tags}</p>
-        <p className="text-xl text-gray-600 leading-relaxed font-light">
+        <motion.h3 
+          className="text-4xl font-medium mb-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isActive ? {
+            opacity: 1,
+            y: 0,
+          } : {
+            opacity: 0,
+            y: 30,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 600,
+            damping: 30,
+            delay: 0.02,
+          }}
+        >
+          {project.name}
+        </motion.h3>
+        <motion.p 
+          className="text-lg text-gray-500 mb-6 font-light"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isActive ? {
+            opacity: 1,
+            y: 0,
+          } : {
+            opacity: 0,
+            y: 20,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 550,
+            damping: 30,
+            delay: 0.04,
+          }}
+        >
+          {project.tags}
+        </motion.p>
+        <motion.p 
+          className="text-xl text-gray-600 leading-relaxed font-light"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isActive ? {
+            opacity: 1,
+            y: 0,
+          } : {
+            opacity: 0,
+            y: 20,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 550,
+            damping: 30,
+            delay: 0.06,
+          }}
+        >
           {project.description}
-        </p>
+        </motion.p>
       </motion.div>
     </div>
   );
@@ -117,20 +214,24 @@ const WorkList = () => {
   }, []);
 
   return (
-    <section className="py-24 px-12 w-full">
+    <section className="py-24 px-12 w-full -mb-[42vh]">
       <h2 className="text-5xl font-medium mb-24">Latest work</h2>
       
       <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-16">
         {/* Left Column - Scrolling Text with Fade Animation */}
-        <div>
+        <div className="pb-[50vh]">
           {projects.map((project, index) => (
-            <ProjectSection key={index} project={project} />
+            <ProjectSection 
+              key={index} 
+              project={project} 
+              isLast={index === projects.length - 1}
+            />
           ))}
         </div>
 
         {/* Right Column - Sticky Preview */}
         <div className="relative hidden md:block pt-48">
-          <div className="sticky top-1/2 -translate-y-1/2 h-[95vh]">
+          <div className="sticky top-1/2 -translate-y-1/2 h-[85vh]">
             <div className="relative w-full h-full bg-gray-900 rounded-3xl overflow-hidden">
               {/* Stack images absolutely for crossfade */}
               {projects.map((project, index) => (

@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Noto+Serif:wght@300;400;500;600;700&display=swap');
 
 /* Custom Font - Notica Serif */
 @font-face {
@@ -11,9 +11,18 @@
 }
 
 :root {
-  font-family: 'Noto Serif', serif, system-ui, Georgia, 'Times New Roman', Times, sans-serif;
+  /* Currently set to Medium (500) as requested. 
+     --fw-semibold is kept at 600 to preserve the Hero title style.
+  */
+  --fw-light: 500;
+  --fw-regular: 500;
+  --fw-medium: 500;
+  --fw-semibold: 600; 
+  --fw-bold: 500;
+  
+  font-family: 'Literata', serif, system-ui, Georgia, 'Times New Roman', Times, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 500;
 
   color-scheme: light;
   color: #1a1a1a;
@@ -44,6 +53,13 @@ body {
   background: #888;
   border-radius: 4px;
 }
+
+/* Override Tailwind utilities to use global variables */
+.font-light { font-weight: var(--fw-light) !important; }
+.font-normal { font-weight: var(--fw-regular) !important; }
+.font-medium { font-weight: var(--fw-medium) !important; }
+.font-semibold { font-weight: var(--fw-semibold) !important; }
+.font-bold { font-weight: var(--fw-bold) !important; }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
