@@ -1,44 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
-
-const projects = [
-  { 
-    name: 'Amplifii', 
-    tags: 'Webflow Development',
-    description: 'A comprehensive SaaS platform redesign focused on scalability and modern design patterns.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80'
-  },
-  { 
-    name: 'Tekst', 
-    tags: 'Webflow Development, GSAP',
-    description: 'Interactive content platform with advanced animations and smooth user experience.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'
-  },
-  { 
-    name: 'Nyton Design', 
-    tags: 'Webflow Development, GSAP',
-    description: 'Creative agency portfolio showcasing dynamic transitions and scroll-based effects.',
-    image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80'
-  },
-  { 
-    name: 'LexSelect', 
-    tags: 'Webflow Development, Custom integrations',
-    description: 'Legal tech platform with complex data integrations and responsive architecture.',
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&q=80'
-  },
-  { 
-    name: 'AdAuris', 
-    tags: 'Webflow Development, Custom integrations',
-    description: 'Marketing automation platform built for enterprise-level scalability.',
-    image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80'
-  },
-  { 
-    name: 'Alterscope', 
-    tags: 'Webflow Development, Custom integrations',
-    description: 'Data analytics dashboard with real-time updates and interactive visualizations.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'
-  },
-];
+import { projects } from '../data/projects';
 
 const ProjectSection = ({ project, isLast }: { project: typeof projects[0], isLast: boolean }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -158,10 +120,11 @@ const ProjectSection = ({ project, isLast }: { project: typeof projects[0], isLa
             delay: 0.04,
           }}
         >
-          {project.tags}
         </motion.p>
-        <motion.p 
-          className="text-xl text-gray-600 leading-relaxed font-light"
+        
+        {/* Tech Stack Logos */}
+        <motion.div 
+          className="flex gap-3 mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={isActive ? {
             opacity: 1,
@@ -174,11 +137,60 @@ const ProjectSection = ({ project, isLast }: { project: typeof projects[0], isLa
             type: "spring",
             stiffness: 550,
             damping: 30,
-            delay: 0.06,
+            delay: 0.05,
+          }}
+        >
+          {project.techStack.map((logo, idx) => (
+            <div key={idx} className="w-6 h-6 flex items-center justify-center">
+              <img src={logo} alt="tech" className="w-full h-full object-contain" />
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.p 
+          className="text-xl text-gray-600 leading-relaxed font-light mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isActive ? {
+            opacity: 1,
+            y: 0,
+          } : {
+            opacity: 0,
+            y: 20,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 550,
+            damping: 30,
+            delay: 0.07,
           }}
         >
           {project.description}
         </motion.p>
+
+        {/* View Button */}
+        <motion.a
+          href="#"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-[#1a1a1a] text-white rounded-full hover:bg-[#333] transition-colors font-medium"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isActive ? {
+            opacity: 1,
+            y: 0,
+          } : {
+            opacity: 0,
+            y: 20,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 550,
+            damping: 30,
+            delay: 0.09,
+          }}
+        >
+          View Project
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </motion.a>
       </motion.div>
     </div>
   );
