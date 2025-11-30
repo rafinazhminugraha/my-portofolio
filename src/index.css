@@ -66,17 +66,43 @@ html {
   font-style: normal;
 }
 
+/* Caudex Font Family */
+@font-face {
+  font-family: 'Caudex';
+  src: url('./assets/fonts/Caudex-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Caudex';
+  src: url('./assets/fonts/Caudex-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Caudex';
+  src: url('./assets/fonts/Caudex-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Caudex';
+  src: url('./assets/fonts/Caudex-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
 :root {
-  /* Updated to Solway weights. 
-     Resetting to Regular (400) as base.
+  /* Updated to Caudex weights. 
+     Caudex has Regular (400) and Bold (700).
   */
-  --fw-light: 300;
+  --fw-light: 400;
   --fw-regular: 400;
-  --fw-medium: 500;
-  --fw-semibold: 700; /* Solway doesn't have 600, mapping to Bold */
+  --fw-medium: 400; /* Fallback to Regular */
+  --fw-semibold: 700; 
   --fw-bold: 700;
   
-  font-family: 'Solway', serif, system-ui, Georgia, 'Times New Roman', Times, sans-serif;
+  font-family: 'Caudex', serif, system-ui, Georgia, 'Times New Roman', Times, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-style: normal;

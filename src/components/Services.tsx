@@ -52,7 +52,7 @@ const Services = () => {
         whileInView="visible"
         viewport={{ amount: 0.5 }}
         variants={itemVariants}
-        className="text-5xl font-medium mb-16"
+        className="text-5xl font-bold mb-16"
       >
         What I offer
       </motion.h2>
@@ -71,7 +71,7 @@ const Services = () => {
             className="flex flex-col gap-6"
           >
             <div className="mb-2">{service.icon}</div>
-            <h3 className="text-2xl font-medium">{service.title}</h3>
+            <h3 className="text-2xl font-bold">{service.title}</h3>
             <p className="text-xl text-gray-600 leading-relaxed font-light">
               {service.description}
             </p>

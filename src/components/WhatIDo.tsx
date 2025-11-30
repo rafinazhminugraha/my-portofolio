@@ -29,7 +29,7 @@ const WhatIDo = () => {
           whileInView="visible"
           viewport={{ amount: 0.5 }}
           variants={itemVariants}
-          className="text-5xl font-medium"
+          className="text-5xl font-bold"
         >
           What I do:
         </motion.h2>

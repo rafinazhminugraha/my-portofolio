@@ -12,7 +12,7 @@ const Footer = () => {
           transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
         >
           {[...Array(4)].map((_, i) => (
-            <span key={i} className="text-[8rem] font-medium mx-8 tracking-tight">
+            <span key={i} className="text-[8rem] font-bold mx-8 tracking-tight">
               Let's work together!
             </span>
           ))}

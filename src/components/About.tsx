@@ -49,7 +49,7 @@ const About = () => {
         whileInView="visible"
         viewport={{ amount: 0.5 }}
         variants={itemVariants}
-        className="text-5xl font-medium mb-16"
+        className="text-5xl font-bold mb-16"
       >
         About me
       </motion.h2>
