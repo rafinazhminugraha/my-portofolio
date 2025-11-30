@@ -27,23 +27,65 @@ const ImagePreview = ({ activeIndex, onHoverChange }: { activeIndex: number, onH
   };
 
   return (
-    <div
-      className="relative w-full h-full bg-gray-900 rounded-3xl overflow-hidden cursor-none"
+    <motion.div
+      className="relative w-full h-full bg-gray-900 rounded-3xl overflow-hidden cursor-none shadow-2xl"
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      animate={{
+        y: [0, -8, 0],
+      }}
+      whileHover={{
+        scale: 1.02,
+      }}
+      transition={{
+        y: {
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+        },
+        scale: {
+          duration: 0.4,
+          ease: "easeOut",
+        },
+      }}
+      style={{
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+      }}
     >
+      {/* Animated Gradient Border Glow - Disabled on Hover */}
+      <motion.div
+        className="absolute inset-0 rounded-3xl pointer-events-none z-10"
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 0, // Completely disabled
+        }}
+        style={{
+          maskImage: 'linear-gradient(black, black) content-box, linear-gradient(black, black)',
+          maskComposite: 'exclude',
+          padding: '2px',
+        }}
+      />
+
       {/* Stack images absolutely for crossfade */}
       {projects.map((project, index) => (
-        <motion.img
+        <a
           key={index}
-          src={project.image}
-          alt={project.name}
-          className="absolute inset-0 w-full h-full object-cover"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: index === activeIndex ? 1 : 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-        />
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0"
+          style={{ pointerEvents: index === activeIndex ? 'auto' : 'none' }}
+        >
+          <motion.img
+            src={project.image}
+            alt={project.name}
+            className="absolute inset-0 w-full h-full object-cover"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: index === activeIndex ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          />
+        </a>
       ))}
 
       {/* Custom Cursor with Dot and Label */}
@@ -65,19 +107,6 @@ const ImagePreview = ({ activeIndex, onHoverChange }: { activeIndex: number, onH
           translateY: '-50%',
         }}
       >
-        {/* Dot Cursor */}
-        <motion.div
-          className="absolute w-3 h-3 bg-white rounded-full shadow-lg border border-black"
-          animate={{
-            scale: isHovered ? 1 : 0,
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 500,
-            damping: 30,
-          }}
-        />
-        
         {/* Label at bottom-right of dot */}
         <motion.div
           className="absolute left-4 top-4"
@@ -96,7 +125,7 @@ const ImagePreview = ({ activeIndex, onHoverChange }: { activeIndex: number, onH
           </div>
         </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -268,7 +297,9 @@ const ProjectSection = ({ project, isLast }: { project: typeof projects[0], isLa
 
         {/* View Button - Glass Design with Slide Effect */}
         <motion.a
-          href="#"
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
           className="relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black backdrop-blur-sm border border-black shadow-sm hover:border-gray-200/50 hover:shadow-lg transition-all duration-500 font-medium group overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           animate={isActive ? {

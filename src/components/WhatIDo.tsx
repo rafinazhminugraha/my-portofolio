@@ -41,10 +41,10 @@ const WhatIDo = () => {
           className="text-xl text-gray-600 font-light leading-relaxed"
         >
           <motion.p variants={itemVariants} className="mb-8">
-            As a Senior Webflow Developer and Technical Strategist, I architect scalable, high-performance web platforms that enable high-growth SaaS companies to capture and convert their target market.
+            As a Frontend Developer with a keen eye for detail, I bridge the gap between static creative vision and dynamic user experience.
           </motion.p>
           <motion.p variants={itemVariants}>
-            My focus is on translating ambitious business goals—from complete rebrands to positioning for acquisition—into future-proof digital assets.
+            I don't just write code. I architect polished, high performance web interfaces that feel alive. My focus is on translating precious designs into clean, responsive code, ensuring that the final product is not only visually stunning but also technically robust, fast, and scalable across the modern web ecosystem.
           </motion.p>
         </motion.div>
       </div>

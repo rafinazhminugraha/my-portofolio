@@ -44,7 +44,7 @@ const Navbar = () => {
     >
       <div className="flex items-center justify-between px-6 py-4 w-full">
         <div className="text-xl font-semibold tracking-tight">
-          <Link to="/">Vladimir</Link>
+          <Link to="/">RNazhmi</Link>
         </div>
         
         <div className="flex items-center gap-12 text-base font-medium text-gray-600">

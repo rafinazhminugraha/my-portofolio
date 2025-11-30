@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
+import personalPhoto from '../assets/images/personal-photo.jpg';
 
 const About = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -63,7 +64,7 @@ const About = () => {
           className="relative aspect-4/5 w-full max-h-[80vh] overflow-hidden rounded-lg bg-gray-100"
         >
             <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" 
+                src={personalPhoto} 
                 alt="Portrait" 
                 className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
             />
@@ -77,16 +78,13 @@ const About = () => {
           className="text-xl text-gray-600 font-light leading-relaxed space-y-8"
         >
             <motion.p variants={itemVariants}>
-                My career path began in customer service, which provided the foundational insight for my entire development philosophy: <span className="font-medium text-[#1a1a1a]">empathy</span> is a strategic tool.
+                My drive is simple, I love seeing people enjoy the digital products I build. <span className="font-medium text-[#1a1a1a]">empathy</span> is a strategic tool.
             </motion.p>
             <motion.p variants={itemVariants}>
-                That experience, rooted in understanding user pain points and business objectives, is my key differentiator. I don't just translate a design from Figma to Webflow; I translate a business goal into a digital platform.
+                That specific goal has made me a "constructive perfectionist." I don't just write code to make it work, I obsess over the details because I believe users can feel the difference.
             </motion.p>
             <motion.p variants={itemVariants}>
-                My focus is on architecting high-performance web assets for high-growth companies. I thrive in high-stakes environments—like rebrands and pre-acquisition readiness—where success is defined by more than just aesthetics.
-            </motion.p>
-            <motion.p variants={itemVariants}>
-                My goal is to act as a technical partner, bridging the gap between creative vision and technical reality.
+                Whether it's a seamless page transition or a button that responds naturally to a click, I refuse to ship "good enough." If there's a flaw in the experience, I fix it, so the user never has to encounter it.
             </motion.p>
         </motion.div>
       </div>
