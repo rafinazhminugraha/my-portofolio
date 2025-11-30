@@ -25,18 +25,49 @@ const services = [
 ];
 
 const Services = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, ease: "easeOut" as const }
+    }
+  };
+
   return (
     <section id="services" className="py-24 px-12 w-full">
-      <h2 className="text-5xl font-medium mb-16">What I offer</h2>
+      <motion.h2 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.5 }}
+        variants={itemVariants}
+        className="text-5xl font-medium mb-16"
+      >
+        What I offer
+      </motion.h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24">
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.2 }}
+        variants={containerVariants}
+      >
         {services.map((service, index) => (
           <motion.div 
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
+            variants={itemVariants}
             className="flex flex-col gap-6"
           >
             <div className="mb-2">{service.icon}</div>
@@ -46,7 +77,7 @@ const Services = () => {
             </p>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

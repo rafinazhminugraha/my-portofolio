@@ -20,7 +20,13 @@ const Footer = () => {
       </div>
 
       <div className="px-6 w-full">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 mb-24">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 mb-24"
+        >
           <div className="flex items-center gap-4 group cursor-pointer">
             <span className="text-2xl md:text-3xl font-light">contact@vladimirpetroski.com</span>
             <Copy className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
@@ -34,15 +40,21 @@ const Footer = () => {
               <X className="w-6 h-6" />
             </a>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800 text-sm text-gray-400">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800 text-sm text-gray-400"
+        >
           <p>© All rights reserved 2025 Vladimir Petroski</p>
           <div className="flex gap-8 mt-4 md:mt-0">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Sitemap</a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
