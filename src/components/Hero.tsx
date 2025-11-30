@@ -8,7 +8,7 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="text-[8rem] leading-[0.95] font-semibold tracking-tight text-[#1a1a1a] mb-12"
-        style={{ fontFamily: "'Notica Serif', serif" }}
+        style={{ fontFamily: "'Notica Serif', serif", fontStyle: 'normal' }}
       >
         Scalable Webflow<br />
         Development for SaaS

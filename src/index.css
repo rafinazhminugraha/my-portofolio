@@ -1,28 +1,65 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Noto+Serif:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+@theme {
+  --font-display: 'Solway', 'Literata', 'Georgia', 'Times New Roman', 'Times', 'serif';
+  --font-body: 'Solway', 'Literata', 'Georgia', 'Times New Roman', 'Times', 'serif';
+}
+
+/* Solway Font Family */
+@font-face {
+  font-family: 'Solway';
+  src: url('./assets/fonts/Solway-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Solway';
+  src: url('./assets/fonts/Solway-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Solway';
+  src: url('./assets/fonts/Solway-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Solway';
+  src: url('./assets/fonts/Solway-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Solway';
+  src: url('./assets/fonts/Solway-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
 
 /* Custom Font - Notica Serif */
 @font-face {
   font-family: 'Notica Serif';
-  src: url('/src/assets/fonts/noticaserif-yqql8.ttf') format('truetype');
-  font-weight: normal;
+  src: url('./assets/fonts/noticaserif-yqql8.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
-  font-display: swap;
 }
 
 :root {
-  /* Currently set to Medium (500) as requested. 
-     --fw-semibold is kept at 600 to preserve the Hero title style.
+  /* Updated to Solway weights. 
+     Resetting to Regular (400) as base.
   */
-  --fw-light: 500;
-  --fw-regular: 500;
+  --fw-light: 300;
+  --fw-regular: 400;
   --fw-medium: 500;
-  --fw-semibold: 600; 
-  --fw-bold: 500;
+  --fw-semibold: 700; /* Solway doesn't have 600, mapping to Bold */
+  --fw-bold: 700;
   
-  font-family: 'Literata', serif, system-ui, Georgia, 'Times New Roman', Times, sans-serif;
+  font-family: 'Solway', serif, system-ui, Georgia, 'Times New Roman', Times, sans-serif;
   line-height: 1.5;
-  font-weight: 500;
+  font-weight: 400;
+  font-style: normal;
 
   color-scheme: light;
   color: #1a1a1a;
