@@ -141,7 +141,7 @@ const ProjectSection = ({ project, isLast }: { project: typeof projects[0], isLa
           }}
         >
           {project.techStack.map((logo, idx) => (
-            <div key={idx} className="w-6 h-6 flex items-center justify-center">
+            <div key={idx} className="w-8 h-8 flex items-center justify-center">
               <img src={logo} alt="tech" className="w-full h-full object-contain" />
             </div>
           ))}
@@ -167,10 +167,10 @@ const ProjectSection = ({ project, isLast }: { project: typeof projects[0], isLa
           {project.description}
         </motion.p>
 
-        {/* View Button */}
+        {/* View Button - Glass Design with Slide Effect */}
         <motion.a
           href="#"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-[#1a1a1a] text-white rounded-full hover:bg-[#333] transition-colors font-medium"
+          className="relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black backdrop-blur-sm border border-black shadow-sm hover:border-gray-200/50 hover:shadow-lg transition-all duration-500 font-medium group overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           animate={isActive ? {
             opacity: 1,
@@ -186,10 +186,40 @@ const ProjectSection = ({ project, isLast }: { project: typeof projects[0], isLa
             delay: 0.09,
           }}
         >
-          View Project
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          {/* Sliding white background */}
+          <div className="absolute inset-0 bg-white rounded-full transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+          
+          <span className="relative z-10 text-white group-hover:text-black transition-colors duration-300 delay-100">View Project</span>
+          <motion.svg 
+            width="16" 
+            height="16" 
+            viewBox="0 0 16 16" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+            className="relative z-10"
+            animate={{
+              x: [0, 3, 0],
+            }}
+            whileHover={{
+              x: 6,
+            }}
+            transition={{
+              x: {
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              },
+            }}
+          >
+            <path 
+              d="M6 3L11 8L6 13" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+              className="text-white group-hover:text-black transition-colors duration-300 delay-100"
+            />
+          </motion.svg>
         </motion.a>
       </motion.div>
     </div>
