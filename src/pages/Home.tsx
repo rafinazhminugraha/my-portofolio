@@ -21,9 +21,12 @@ const Separator = () => (
   </div>
 );
 
+import MouseParticles from '@/components/MouseParticles';
+
 const Home = () => {
   return (
-    <div className="min-h-screen bg-white text-[#1a1a1a]">
+    <div className="min-h-screen bg-white text-[#1a1a1a] relative">
+      <MouseParticles />
       <Navbar />
       <main>
         <Hero />

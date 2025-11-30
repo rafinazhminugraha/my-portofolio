@@ -31,7 +31,7 @@ const WhatIDo = () => {
           variants={itemVariants}
           className="text-5xl font-bold"
         >
-          What I do:
+          What I do
         </motion.h2>
         <motion.div 
           initial="hidden"
