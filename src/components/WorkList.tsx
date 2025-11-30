@@ -214,7 +214,7 @@ const WorkList = () => {
   }, []);
 
   return (
-    <section className="py-24 px-12 w-full -mb-[42vh]">
+    <section id="work" className="py-24 px-12 w-full -mb-[42vh]">
       <h2 className="text-5xl font-medium mb-24">Latest work</h2>
       
       <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-16">

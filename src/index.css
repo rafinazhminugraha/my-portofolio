@@ -1,6 +1,10 @@
 @import 'tailwindcss';
 @import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --font-display: 'Solway', 'Literata', 'Georgia', 'Times New Roman', 'Times', 'serif';
   --font-body: 'Solway', 'Literata', 'Georgia', 'Times New Roman', 'Times', 'serif';

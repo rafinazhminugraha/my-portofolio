@@ -3,7 +3,7 @@ import { Linkedin, X, Copy } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1a1a1a] text-white pt-32 pb-12 overflow-hidden">
+    <footer id="contact" className="bg-[#1a1a1a] text-white pt-32 pb-12 overflow-hidden">
       {/* Marquee */}
       <div className="relative flex overflow-x-hidden mb-32">
         <motion.div 

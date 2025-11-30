@@ -1,6 +1,6 @@
 const WhatIDo = () => {
   return (
-    <section className="py-24 px-12 w-full">
+    <section id="what-i-do" className="py-24 px-12 w-full">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <h2 className="text-5xl font-medium">What I do:</h2>
         <div className="text-xl text-gray-600 font-light leading-relaxed">

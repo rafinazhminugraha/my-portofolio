@@ -38,10 +38,12 @@ const Navbar = () => {
           <Link to="/">Vladimir</Link>
         </div>
         
-        <div className="flex items-center gap-8 text-sm font-medium text-gray-600">
-          <Link to="/work" className="hover:text-black transition-colors">Work</Link>
-          <Link to="/about" className="hover:text-black transition-colors">About</Link>
-          <Link to="/contact" className="hover:text-black transition-colors">Book a call</Link>
+        <div className="flex items-center gap-12 text-base font-medium text-gray-600">
+          <a href="#work" className="hover:text-black transition-colors">Work</a>
+          <a href="#what-i-do" className="hover:text-black transition-colors">Expertise</a>
+          <a href="#services" className="hover:text-black transition-colors">Services</a>
+          <a href="#about" className="hover:text-black transition-colors">About</a>
+          <a href="#contact" className="hover:text-black transition-colors">Contact</a>
         </div>
       </div>
     </motion.nav>
