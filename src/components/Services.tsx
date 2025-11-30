@@ -23,19 +23,19 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-24 px-12 w-full">
+    <section id="services" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 w-full">
       <motion.h2 
         initial="hidden"
         whileInView="visible"
         viewport={{ amount: 0.5 }}
         variants={itemVariants}
-        className="text-5xl font-bold mb-16"
+        className="text-3xl sm:text-4xl md:text-5xl font-bold mb-10 sm:mb-12 md:mb-16"
       >
         What I offer
       </motion.h2>
       
       <motion.div 
-        className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24"
+        className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-12 md:gap-x-16 gap-y-12 sm:gap-y-16 md:gap-y-24"
         initial="hidden"
         whileInView="visible"
         viewport={{ amount: 0.2 }}
@@ -47,13 +47,13 @@ const Services = () => {
             <motion.div 
               key={index}
               variants={itemVariants}
-              className="flex flex-col gap-6"
+              className="flex flex-col gap-4 sm:gap-5 md:gap-6"
             >
-              <div className="mb-2">
-                <IconComponent className="w-6 h-6" />
+              <div className="mb-1 sm:mb-2">
+                <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <h3 className="text-2xl font-bold">{service.title}</h3>
-              <p className="text-xl text-gray-600 leading-relaxed font-light">
+              <h3 className="text-xl sm:text-2xl font-bold">{service.title}</h3>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed font-light">
                 {service.description}
               </p>
             </motion.div>

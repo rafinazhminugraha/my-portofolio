@@ -22,7 +22,7 @@ const Footer = () => {
   };
 
   return (
-    <footer id="contact" className="bg-[#1a1a1a] text-white pt-20 pb-8 overflow-hidden">
+    <footer id="contact" className="bg-[#1a1a1a] text-white pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-8 overflow-hidden">
       {/* Toast Notification */}
       <Toast 
         message="Email copied to clipboard!"
@@ -32,44 +32,44 @@ const Footer = () => {
       />
 
       {/* Marquee */}
-      <div className="relative flex overflow-x-hidden mb-16">
+      <div className="relative flex overflow-x-hidden mb-10 sm:mb-12 md:mb-16">
         <motion.div 
           className="flex whitespace-nowrap"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
         >
           {[...Array(4)].map((_, i) => (
-            <span key={i} className="text-[8rem] font-bold mx-8 tracking-tight">
+            <span key={i} className="text-[clamp(3rem,12vw,8rem)] font-bold mx-4 sm:mx-6 md:mx-8 tracking-tight">
               Let's work together!
             </span>
           ))}
         </motion.div>
       </div>
 
-      <div className="px-6 w-full">
+      <div className="px-4 sm:px-6 w-full">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 mb-12"
+          className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-10 md:mb-12"
         >
           <div 
             onClick={handleCopyEmail}
             className="flex items-center gap-4 group cursor-pointer"
           >
-            <span className="text-2xl md:text-3xl font-light">{email}</span>
-            <Copy className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
+            <span className="text-xl sm:text-2xl md:text-3xl font-light break-all">{email}</span>
+            <Copy className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-white transition-colors shrink-0" />
           </div>
           
-          <div className="flex gap-4">
+          <div className="flex gap-3 sm:gap-4">
             <a 
               href="https://www.linkedin.com/in/rafi-nazhmi-nugraha" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="p-4 bg-[#2a2a2a] rounded-lg hover:bg-[#333] transition-colors"
+              className="p-3 sm:p-4 bg-[#2a2a2a] rounded-lg hover:bg-[#333] transition-colors"
             >
-              <Linkedin className="w-6 h-6" />
+              <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
             </a>
           </div>
         </motion.div>
@@ -79,7 +79,7 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex justify-center items-center pt-8 border-t border-gray-800 text-sm text-gray-400"
+          className="flex justify-center items-center pt-6 sm:pt-8 border-t border-gray-800 text-xs sm:text-sm text-gray-400"
         >
           <p>© All rights reserved 2025 Rafi Nazhmi Nugraha</p>
         </motion.div>

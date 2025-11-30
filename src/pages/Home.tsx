@@ -9,7 +9,7 @@ import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
 
 const Separator = () => (
-  <div className="w-full pl-12">
+  <div className="w-full pl-4 sm:pl-6 md:pl-8 lg:pl-12">
     <motion.div 
       initial={{ scaleX: 0 }}
       whileInView={{ scaleX: 1 }}

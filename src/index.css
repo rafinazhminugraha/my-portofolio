@@ -137,6 +137,10 @@ body {
   border-radius: 4px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 /* Override Tailwind utilities to use global variables */
 .font-light { font-weight: var(--fw-light) !important; }
 .font-normal { font-weight: var(--fw-regular) !important; }
@@ -144,6 +148,12 @@ body {
 .font-semibold { font-weight: var(--fw-semibold) !important; }
 .font-bold { font-weight: var(--fw-bold) !important; }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

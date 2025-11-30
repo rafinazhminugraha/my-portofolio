@@ -44,24 +44,24 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-24 px-12 w-full">
+    <section id="about" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 w-full">
       <motion.h2 
         initial="hidden"
         whileInView="visible"
         viewport={{ amount: 0.5 }}
         variants={itemVariants}
-        className="text-5xl font-bold mb-16"
+        className="text-3xl sm:text-4xl md:text-5xl font-bold mb-10 sm:mb-12 md:mb-16"
       >
         About me
       </motion.h2>
       
-      <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+      <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-start">
         {/* Image Column */}
         <motion.div 
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
           variants={itemVariants}
-          className="relative aspect-4/5 w-full max-h-[80vh] overflow-hidden rounded-lg bg-gray-100"
+          className="relative aspect-4/5 w-full max-h-[50vh] md:max-h-[80vh] overflow-hidden rounded-lg bg-gray-100"
         >
             <img 
                 src={personalPhoto} 
@@ -75,7 +75,7 @@ const About = () => {
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
           variants={containerVariants}
-          className="text-xl text-gray-600 font-light leading-relaxed space-y-8"
+          className="text-base sm:text-lg md:text-xl text-gray-600 font-light leading-relaxed space-y-6 sm:space-y-8"
         >
             <motion.p variants={itemVariants}>
                 My drive is simple, I love seeing people enjoy the digital products I build. <span className="font-medium text-[#1a1a1a]">empathy</span> is a strategic tool.

@@ -22,14 +22,14 @@ const WhatIDo = () => {
   };
 
   return (
-    <section id="what-i-do" className="py-24 px-12 w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <section id="what-i-do" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
         <motion.h2 
           initial="hidden"
           whileInView="visible"
           viewport={{ amount: 0.5 }}
           variants={itemVariants}
-          className="text-5xl font-bold"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold"
         >
           What I do
         </motion.h2>
@@ -38,9 +38,9 @@ const WhatIDo = () => {
           whileInView="visible"
           viewport={{ amount: 0.3 }}
           variants={containerVariants}
-          className="text-xl text-gray-600 font-light leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-gray-600 font-light leading-relaxed"
         >
-          <motion.p variants={itemVariants} className="mb-8">
+          <motion.p variants={itemVariants} className="mb-6 sm:mb-8">
             As a Frontend Developer with a keen eye for detail, I bridge the gap between static creative vision and dynamic user experience.
           </motion.p>
           <motion.p variants={itemVariants}>
