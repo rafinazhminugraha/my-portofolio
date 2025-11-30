@@ -67,7 +67,7 @@ const ImagePreview = ({ activeIndex, onHoverChange }: { activeIndex: number, onH
       >
         {/* Dot Cursor */}
         <motion.div
-          className="absolute w-3 h-3 bg-white rounded-full shadow-lg border-1 border-black"
+          className="absolute w-3 h-3 bg-white rounded-full shadow-lg border border-black"
           animate={{
             scale: isHovered ? 1 : 0,
           }}
