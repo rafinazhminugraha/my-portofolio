@@ -1,9 +1,26 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 const About = () => {
-  const textRef = useRef(null);
-  const isTextInView = useInView(textRef, { amount: 0.2 });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { amount: 0.2 });
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (isInView) {
+      setIsVisible(true);
+    } else {
+      // Check if we scrolled past it (down) or above it (up)
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        // If rect.top > 0, it means the element is below the viewport (we scrolled up). Hide it.
+        // If rect.top < 0, it means the element is above the viewport (we scrolled down). Keep it visible.
+        if (rect.top > 0) {
+          setIsVisible(false);
+        }
+      }
+    }
+  }, [isInView]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -37,14 +54,13 @@ const About = () => {
         About me
       </motion.h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+      <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         {/* Image Column */}
         <motion.div 
           initial="hidden"
-          whileInView="visible"
-          viewport={{ amount: 0.3 }}
+          animate={isVisible ? "visible" : "hidden"}
           variants={itemVariants}
-          className="relative aspect-4/5 w-full overflow-hidden rounded-lg bg-gray-100"
+          className="relative aspect-4/5 w-full max-h-[80vh] overflow-hidden rounded-lg bg-gray-100"
         >
             <img 
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" 
@@ -55,9 +71,8 @@ const About = () => {
 
         {/* Text Column */}
         <motion.div 
-          ref={textRef}
           initial="hidden"
-          animate={isTextInView ? "visible" : "hidden"}
+          animate={isVisible ? "visible" : "hidden"}
           variants={containerVariants}
           className="text-xl text-gray-600 font-light leading-relaxed space-y-8"
         >

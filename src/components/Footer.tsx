@@ -3,9 +3,9 @@ import { Linkedin, X, Copy } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-[#1a1a1a] text-white pt-32 pb-12 overflow-hidden">
+    <footer id="contact" className="bg-[#1a1a1a] text-white pt-20 pb-8 overflow-hidden">
       {/* Marquee */}
-      <div className="relative flex overflow-x-hidden mb-32">
+      <div className="relative flex overflow-x-hidden mb-16">
         <motion.div 
           className="flex whitespace-nowrap"
           animate={{ x: ["0%", "-50%"] }}
@@ -25,7 +25,7 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 mb-24"
+          className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 mb-12"
         >
           <div className="flex items-center gap-4 group cursor-pointer">
             <span className="text-2xl md:text-3xl font-light">contact@vladimirpetroski.com</span>
