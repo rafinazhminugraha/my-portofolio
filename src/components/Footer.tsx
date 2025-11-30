@@ -1,9 +1,36 @@
 import { motion } from 'framer-motion';
-import { Linkedin, X, Copy } from 'lucide-react';
+import { Linkedin, Copy } from 'lucide-react';
+import { useState } from 'react';
+import Toast from './Toast';
 
 const Footer = () => {
+  const [showToast, setShowToast] = useState(false);
+  const email = 'rafinazhminugraha@upi.edu';
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setShowToast(true);
+      
+      // Auto-hide toast after 3 seconds
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+    } catch (err) {
+      console.error('Failed to copy email:', err);
+    }
+  };
+
   return (
     <footer id="contact" className="bg-[#1a1a1a] text-white pt-20 pb-8 overflow-hidden">
+      {/* Toast Notification */}
+      <Toast 
+        message="Email copied to clipboard!"
+        type="success"
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+      />
+
       {/* Marquee */}
       <div className="relative flex overflow-x-hidden mb-16">
         <motion.div 
@@ -27,17 +54,22 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 mb-12"
         >
-          <div className="flex items-center gap-4 group cursor-pointer">
-            <span className="text-2xl md:text-3xl font-light">contact@vladimirpetroski.com</span>
+          <div 
+            onClick={handleCopyEmail}
+            className="flex items-center gap-4 group cursor-pointer"
+          >
+            <span className="text-2xl md:text-3xl font-light">{email}</span>
             <Copy className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
           </div>
           
           <div className="flex gap-4">
-            <a href="#" className="p-4 bg-[#2a2a2a] rounded-lg hover:bg-[#333] transition-colors">
+            <a 
+              href="https://www.linkedin.com/in/rafi-nazhmi-nugraha" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-4 bg-[#2a2a2a] rounded-lg hover:bg-[#333] transition-colors"
+            >
               <Linkedin className="w-6 h-6" />
-            </a>
-            <a href="#" className="p-4 bg-[#2a2a2a] rounded-lg hover:bg-[#333] transition-colors">
-              <X className="w-6 h-6" />
             </a>
           </div>
         </motion.div>
@@ -47,13 +79,9 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800 text-sm text-gray-400"
+          className="flex justify-center items-center pt-8 border-t border-gray-800 text-sm text-gray-400"
         >
-          <p>© All rights reserved 2025 Vladimir Petroski</p>
-          <div className="flex gap-8 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Sitemap</a>
-          </div>
+          <p>© All rights reserved 2025 Rafi Nazhmi Nugraha</p>
         </motion.div>
       </div>
     </footer>
