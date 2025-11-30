@@ -50,6 +50,22 @@ html {
   font-style: normal;
 }
 
+/* Custom Font - Ruigslay */
+@font-face {
+  font-family: 'Ruigslay';
+  src: url('./assets/fonts/Ruigslay.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Custom Font - Aestera */
+@font-face {
+  font-family: 'Aestera';
+  src: url('./assets/fonts/Aestera.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   /* Updated to Solway weights. 
      Resetting to Regular (400) as base.
