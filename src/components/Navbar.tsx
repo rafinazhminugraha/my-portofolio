@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { useNavbar } from '../contexts/NavbarContext';
 
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const { forceHidden } = useNavbar();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +39,7 @@ const Navbar = () => {
         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.02)',
       }}
       initial={{ y: 0 }}
-      animate={{ y: isVisible ? 0 : -100 }}
+      animate={{ y: (isVisible && !forceHidden) ? 0 : -100 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <div className="flex items-center justify-between px-6 py-4 w-full">

@@ -1,6 +1,105 @@
 import { motion } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 import { projects } from '../data/projects';
+import { useNavbar } from '../contexts/NavbarContext';
+
+// Image Preview Component with Cursor Following Effect
+const ImagePreview = ({ activeIndex, onHoverChange }: { activeIndex: number, onHoverChange: (hovered: boolean) => void }) => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    onHoverChange(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    onHoverChange(false);
+  };
+
+  return (
+    <div
+      className="relative w-full h-full bg-gray-900 rounded-3xl overflow-hidden cursor-none"
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Stack images absolutely for crossfade */}
+      {projects.map((project, index) => (
+        <motion.img
+          key={index}
+          src={project.image}
+          alt={project.name}
+          className="absolute inset-0 w-full h-full object-cover"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: index === activeIndex ? 1 : 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+        />
+      ))}
+
+      {/* Custom Cursor with Dot and Label */}
+      <motion.div
+        className="absolute pointer-events-none z-20"
+        animate={{
+          x: mousePosition.x,
+          y: mousePosition.y,
+          opacity: isHovered ? 1 : 0,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 400,
+          damping: 25,
+          mass: 0.5,
+        }}
+        style={{
+          translateX: '-50%',
+          translateY: '-50%',
+        }}
+      >
+        {/* Dot Cursor */}
+        <motion.div
+          className="absolute w-3 h-3 bg-white rounded-full shadow-lg border-1 border-black"
+          animate={{
+            scale: isHovered ? 1 : 0,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 500,
+            damping: 30,
+          }}
+        />
+        
+        {/* Label at bottom-right of dot */}
+        <motion.div
+          className="absolute left-4 top-4"
+          animate={{
+            scale: isHovered ? 1 : 0,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 400,
+            damping: 25,
+            delay: 0.05,
+          }}
+        >
+          <div className="px-3 py-1.5 bg-white rounded-full font-medium text-black text-xs shadow-lg whitespace-nowrap border border-black">
+            View Live
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+};
+
 
 const ProjectSection = ({ project, isLast }: { project: typeof projects[0], isLast: boolean }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -228,7 +327,14 @@ const ProjectSection = ({ project, isLast }: { project: typeof projects[0], isLa
 
 const WorkList = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isImageHovered, setIsImageHovered] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { setForceHidden } = useNavbar();
+
+  const handleImageHoverChange = (hovered: boolean) => {
+    setIsImageHovered(hovered);
+    setForceHidden(hovered);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -256,12 +362,21 @@ const WorkList = () => {
   }, []);
 
   return (
-    <section id="work" className="py-24 px-12 w-full -mb-[42vh]">
+    <section id="work" className="py-24 px-12 w-full -mb-[42vh] relative">
       <h2 className="text-5xl font-bold mb-24">Latest work</h2>
       
-      <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-16">
+      <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-16 relative">
         {/* Left Column - Scrolling Text with Fade Animation */}
-        <div className="pb-[50vh]">
+        <motion.div 
+          className="pb-[50vh] relative"
+          animate={{
+            filter: isImageHovered ? 'blur(4px)' : 'blur(0px)',
+            opacity: isImageHovered ? 0.3 : 1,
+          }}
+          transition={{
+            duration: 0.4,
+          }}
+        >
           {projects.map((project, index) => (
             <ProjectSection 
               key={index} 
@@ -269,25 +384,12 @@ const WorkList = () => {
               isLast={index === projects.length - 1}
             />
           ))}
-        </div>
+        </motion.div>
 
         {/* Right Column - Sticky Preview */}
-        <div className="relative hidden md:block pt-48">
+        <div className="relative hidden md:block pt-48 z-30">
           <div className="sticky top-1/2 -translate-y-1/2 h-[85vh]">
-            <div className="relative w-full h-full bg-gray-900 rounded-3xl overflow-hidden">
-              {/* Stack images absolutely for crossfade */}
-              {projects.map((project, index) => (
-                <motion.img
-                  key={index}
-                  src={project.image}
-                  alt={project.name}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: index === activeIndex ? 1 : 0 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                />
-              ))}
-            </div>
+            <ImagePreview activeIndex={activeIndex} onHoverChange={handleImageHoverChange} />
           </div>
         </div>
       </div>
