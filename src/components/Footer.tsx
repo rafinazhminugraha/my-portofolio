@@ -5,7 +5,7 @@ import Toast from './Toast';
 
 const Footer = () => {
   const [showToast, setShowToast] = useState(false);
-  const email = 'rafinazhminugraha@upi.edu';
+  const email = 'rafinazhminugraha@gmail.com';
 
   const handleCopyEmail = async () => {
     try {
