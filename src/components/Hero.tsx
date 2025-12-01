@@ -11,7 +11,7 @@ const Hero = () => {
         className="text-[clamp(2.5rem,8vw,6rem)] leading-[1.1] font-semibold tracking-tight text-[#1a1a1a] mb-6 sm:mb-8 md:mb-10 lg:mb-12"
         style={{ fontFamily: "'Aestera', serif", fontStyle: 'normal' }}
       >
-        Cutting edge Frontent for Immersive Digital Products
+        Cutting edge Frontend for Immersive Digital Products
       </motion.h1>
       
       <motion.p 
