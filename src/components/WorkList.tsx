@@ -218,14 +218,14 @@ const ProjectSection = ({ project, isLast }: { project: typeof projects[0], isLa
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="block relative aspect-[16/10] w-full bg-gray-900"
+            className="block relative aspect16/10 w-full bg-gray-900"
           >
             <img 
               src={project.image} 
               alt={project.name}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent pointer-events-none" />
           </a>
         </div>
 
@@ -411,7 +411,7 @@ const WorkList = () => {
   }, []);
 
   return (
-    <section id="work" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 w-full -mb-0 md:-mb-[42vh] relative">
+    <section id="work" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 w-full mb-0 md:-mb-[42vh] relative">
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16 md:mb-24">Latest work</h2>
       
       <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 relative">

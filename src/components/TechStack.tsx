@@ -3,8 +3,8 @@ import { techStack } from '../data/techStack';
 
 const TechStack = () => {
   return (
-    <div className="w-full overflow-x-auto lg:overflow-x-visible scrollbar-hide">
-      <div className="flex lg:flex-wrap items-center justify-start lg:justify-center gap-3 md:gap-4 max-w-6xl lg:mx-auto min-w-max lg:min-w-0 pb-2 lg:pb-0">
+    <div className="w-full">
+      <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-12 lg:gap-4 max-w-6xl mx-auto pb-4 lg:pb-0">
         {techStack.map((tech, index) => {
           // Create zigzag effect - alternate items up and down
           const yOffset = index % 2 === 0 ? -12 : 12;
@@ -17,7 +17,7 @@ const TechStack = () => {
           return (
             <motion.div
               key={tech.name}
-              className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-full bg-white/60 backdrop-blur-sm border border-gray-200/50 shadow-sm flex-shrink-0"
+              className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-full bg-white/60 backdrop-blur-sm border border-gray-200/50 shadow-sm shrink-0"
               style={{
                 transform: `translateY(${yOffset}px)`,
               }}
