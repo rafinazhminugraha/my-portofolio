@@ -56,7 +56,6 @@ const Toast = ({ message, type = 'success', isVisible, onClose, className = '' }
           <div 
             className="flex items-center gap-3 bg-white rounded-full shadow-lg px-5 py-3 border border-gray-200"
             style={{
-              minWidth: '280px',
               maxWidth: '400px',
             }}
           >

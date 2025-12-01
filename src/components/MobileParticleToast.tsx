@@ -41,7 +41,7 @@ const MobileParticleToast = () => {
 
   return (
     <Toast
-      message="If you touch any blank screen, the particles will follow you. Give it a try!"
+      message="Tap the background to interact ✨"
       type="magic"
       isVisible={isVisible}
       onClose={() => setIsVisible(false)}
