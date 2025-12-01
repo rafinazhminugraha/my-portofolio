@@ -78,7 +78,7 @@ const About = () => {
           className="text-base sm:text-lg md:text-xl text-gray-600 font-light leading-relaxed space-y-6 sm:space-y-8"
         >
             <motion.p variants={itemVariants}>
-                My drive is simple, I love seeing people enjoy the digital products I build. <span className="font-medium text-[#1a1a1a]">empathy</span> is a strategic tool.
+                Hi i'm Rafi Nazhmi Nugraha, you can call me Rafi. My drive is simple, I love seeing people enjoy the digital products I build. <span className="font-medium text-[#1a1a1a]">Empathy</span> is a strategic tool.
             </motion.p>
             <motion.p variants={itemVariants}>
                 That specific goal has made me a "constructive perfectionist." I don't just write code to make it work, I obsess over the details because I believe users can feel the difference.
