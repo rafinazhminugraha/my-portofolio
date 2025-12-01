@@ -1,73 +1,103 @@
-# React + TypeScript + Vite
+# 💼 Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance **personal portfolio** built using **React, Vite, Tailwind CSS, TypeScript, and Framer Motion**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+**Interactive Mouse Particles** – Engaging particle effects that follow mouse movement  
+**Smooth Animations** – Professional animations powered by Framer Motion  
+**Responsive Design** – Optimized for all screen sizes and devices  
+**Modern Tech Stack** – Built with cutting-edge web technologies  
+**Project Showcase** – Dynamic work portfolio with live project links  
+**Performance Optimized** – Fast load times with Vite bundler  
+**Mobile-First Approach** – Seamless experience across desktop and mobile
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Technology | Description |
+|------------|-------------|
+| ⚛️ **React** | Component-based UI framework |
+| ⚡ **Vite** | Lightning-fast development environment |
+| 🎨 **Tailwind CSS** | Modern utility-first styling |
+| 📘 **TypeScript** | Type-safe JavaScript development |
+| 🎭 **Framer Motion** | Smooth animations and transitions |
+| 🔗 **React Router** | Client-side routing solution |
+| 🎯 **Lucide Icons** | Beautiful open-source icons |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📂 Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```
+my-portfolio/
+├── src/
+│   ├── components/         # Reusable UI components
+│   │   ├── About.tsx       # About section with personal info
+│   │   ├── Hero.tsx        # Landing hero section
+│   │   ├── Navbar.tsx      # Navigation bar
+│   │   ├── Footer.tsx      # Footer with contact info
+│   │   ├── WorkList.tsx    # Portfolio project showcase
+│   │   ├── WhatIDo.tsx     # Skills and expertise section
+│   │   ├── Services.tsx    # Professional services
+│   │   ├── TechStack.tsx   # Technology stack display
+│   │   ├── MouseParticles.tsx      # Interactive particle effects
+│   │   └── MobileParticleToast.tsx # Mobile interaction hint
+│   ├── data/              # Static data and content
+│   │   ├── projects.ts    # Project portfolio data
+│   │   ├── services.ts    # Services offered
+│   │   └── techStack.ts   # Technology stack info
+│   ├── pages/             # Page components
+│   │   └── Home.tsx       # Main home page
+│   ├── assets/            # Images and static assets
+│   ├── App.tsx            # Root application component
+│   └── main.tsx           # Application entry point
+├── public/                # Public static files
+└── package.json           # Project dependencies
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+## 🎯 Key Features Breakdown
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+### 🎨 **Modern Stack Mastery**
+Leverages the full power of React, TypeScript, and Tailwind CSS to build scalable applications that meet modern engineering standards.
+
+### ⚡ **Performance & Optimization**
+Balances high-end aesthetics with technical optimization, prioritizing Core Web Vitals for fast load times and lag-free rendering.
+
+### 🎭 **Fluid Motion & Interactivity**
+Specializes in using Framer Motion to create interfaces that breathe, with complex animations and subtle micro-interactions.
+
+### 📐 **Pixel-Perfect Implementation**
+Extreme precision in translating designs into code, obsessing over spacing, typography, and responsiveness.
+
+---
+
+## 🌐 Live Demo
+
+Check out the live portfolio: **(https://rafinazhmi.vercel.app)**
+
+---
+
+## 📧 Contact
+
+**Email:** rafinazhminugraha@upi.edu 
+**LinkedIn:** [rafinazhminugraha](https://www.linkedin.com/in/rafi-nazhmi-nugraha/)  
+**GitHub:** [@rafinazhminugraha](https://github.com/rafinazhminugraha)  
+
+---
+
+## 🙏 Acknowledgments
+
+- **Framer Motion** for the incredible animation library
+- **Tailwind CSS** for the utility-first styling approach
+- **Vite** for the blazing-fast build tool
+- **React** for the powerful UI framework
+
+---
+
+Made with ❤️ by Rafi Nazhmi Nugraha
